@@ -1,0 +1,717 @@
+html {
+    height: 100%;
+    overflow: hidden;
+    /*overflow-x: hidden;*/
+}
+::-webkit-scrollbar {
+    width: 0px; /* remove scrollbar space */
+    /*background: transparent;*/ /* optional: just make scrollbar invisible */
+}
+body {
+	font-family: Tele-Nor, sans-serif;
+}
+input::placeholder { 
+	color: #bbbbbb; 
+	font-style: italic; 
+}
+/**************************************************************************************************/
+@font-face {
+    font-family: Tele-Nor;
+    src: url(../fonts/tele-grotesknor.eot);
+    src: url(../fonts/tele-grotesknor.eot?#iefix) format("embedded-opentype"),url(../fonts/tele-grotesknor.woff2) format("woff2"),url(../fonts/tele-grotesknor.woff) format("woff"),url(../fonts/tele-grotesknor.ttf) format("truetype"),url(../fonts/tele-grotesknor.svg) format("svg");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: Tele-Ult;
+    src: url(../fonts/tele-groteskult.eot);
+    src: url(../fonts/tele-groteskult.eot?#iefix) format("embedded-opentype"),url(../fonts/tele-groteskult.woff2) format("woff2"),url(../fonts/tele-groteskult.woff) format("woff"),url(../fonts/tele-groteskult.ttf) format("truetype"),url(../fonts/tele-groteskult.svg) format("svg");
+    font-weight: 400;
+    font-style: normal;
+}
+/**************************************************************************************************/
+.boardBody {
+	background: #797a85;
+	margin: 0px;
+    height: 100%;
+}
+.boardSideChat {
+    display: inline-block;
+    width: calc(70% - 4px);
+    height: 100%;
+    margin: 0px 2px 0px 2px;
+    vertical-align: top;
+}
+.boardChatShell {
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    background-color: #797a85;
+	background-image: url('../images/builder-phone-4k-reddit.png');
+	background-repeat: no-repeat;
+	background-position: inherit; 
+    background-size: calc(100% - 32px);
+    vertical-align: top;
+	margin-top: 30px;
+    margin-left: 30px;
+    background-repeat-y: repeat;
+}
+.boardChatShellLoading {
+    display: inline-block;
+    margin-top: 180px;
+    margin-left: calc(50% - 46px);
+}
+.boardChatShellError {
+    text-align: center;
+    font-size: 60px;
+    margin: 180px 0px;
+    padding: 0px 20px 0px 164px;
+    color: #cc0020;
+    width: calc(100% - 360px);
+}
+.boardChatInnerShell {
+    margin: 0px 84px 0px 52px;
+    position: relative;
+    top: 120px;
+    height: calc(100% - 120px);
+	overflow-y: scroll;
+}
+.emalUsLink {
+    vertical-align: top;
+    display: inline-block;
+    margin: 4px 0px 0px 0px;
+    position: absolute;
+    right: 8px;
+    bottom: 10px;
+    color: #ffffff;
+    background: #000000;
+    padding: 0px 14px;
+    font-size: 20px;
+    line-height: 28px;
+    border-radius: 28px;
+    border: 2px solid #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+/**************************************************************************************************/
+.notificationShell {
+	display: block;
+    z-index: 1040;
+    position: absolute;
+    right: 31%;
+    left: 31%;
+    top: 30px;
+    opacity: 0.99;
+    margin: 10px 10px 10px 10px;
+	animation: displaynotification 1.2s;
+}
+@keyframes displaynotification {
+	from {
+		top: -170px;
+	}
+	to {
+		top: 30px;
+	}
+}
+.notificationHideShell {
+	animation: hidenotification 1.2s !important;
+}
+@keyframes hidenotification {
+	from {
+		top: 30px;
+	}
+	to {
+		top: -170px;
+	}
+}
+.notificationBlock {
+    position: absolute;
+    z-index: 1050;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    background: white;
+    font-size: 40px;
+    font-weight: 600;
+    padding: 20px;
+    border-radius: 0px;
+    border: 2px solid #3b2957;
+    box-shadow: 0px 0px 10px 2px #aaaaaa;
+}
+/**************************************************************************************************/
+.boardSideInfo {
+    display: inline-block;
+    width: calc(30% - 6px);
+    height: 100%;
+    margin: 0px 0px;
+    background: #797a85;
+    vertical-align: bottom;
+}
+.boardIcon {
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	vertical-align: bottom;
+}
+.boardIcoLabel {
+	color: #000000;
+    font-size: 24px;
+    font-family: tele-nor;
+    margin-left: 10px;
+}
+.boardInfoTitle {
+    color: #ebebeb;
+    font-size: 60px;
+    font-family: Tele-Ult;
+    margin: 15px 0px 0px 0px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.boardInfoDesc {
+	color: #ffffff;
+    font-size: 26px;
+    font-family: tele-nor;
+    overflow: hidden;
+    white-space: nowrap;
+	margin-left: 2px;
+}
+.boardInfoControlHolder {
+	margin: 15px 5px 0px 5px;
+	width: 100%;
+}
+.boardInfoControlButton {
+	margin: 0px 20px 0px 5px;
+	cursor: pointer;
+    display: inline-block;
+}
+.controlButton {
+	height: 34px;
+}
+.boardSettingLabel {
+	color: #000000;
+	font-size: 32px;
+	display: inline-block;
+    width: calc(50% - 10px);
+    font-family: Tele-Ult;
+    vertical-align: top;
+    margin-left: 6px;
+}
+.boardInfoEdit {
+    margin: 0px;
+    position: relative;
+    right: calc(-100% + 58px);
+    top: 10px;
+	cursor: pointer;
+}
+.boardInfoBlock {
+	margin: 20px 30px 45px 0px;
+	padding: 25px;
+	box-shadow: inset 2px 2px 10px #aaaaaa;
+	border-bottom: 1px solid #aaaaaa;
+	border-radius: 20px;
+	background: #ebebeb;
+}
+.boardBlockData {
+    margin-bottom: 15px;
+}
+.boardSubBlockData {
+    display: inline-block;
+    width: calc(50% - 4px);
+    font-family: tele-ult;
+}
+.boardRedditTitle {
+	color: #000000;
+    overflow: inherit;
+    white-space: inherit;
+    font-size: 48px;
+}
+.boardRedditLink {
+    max-height: 194px;
+    overflow: hidden;
+    display: block;
+    white-space: pre-line;
+}
+.contRedditThumbnail {
+    width: 100%;
+}
+.boardRedditThumbnail {
+    text-align: center;
+    margin: 20px auto 0px auto;
+    display: block;
+    min-width: 280px;
+}
+/**************************************************************************************************/
+.baordInfoDisplayMode {
+	animation: displayin 1.5s;
+}
+@keyframes displayin {
+	from {
+		margin-top: 40%;
+		opacity: .5;
+	}
+	82% {
+		margin-top: 3%;
+		opacity: .9;
+	}
+	to {
+		margin-top: 0px;
+		opacity: 1;
+	}
+}
+.baordInfoEditMode {
+	animation: editin 1.5s;
+	margin: 0px 30px 0px 0px;
+	padding: 20px 0px 25px 20px;
+	box-shadow: inset 2px 2px 10px #aaaaaa;
+	border-bottom: 1px solid #aaaaaa;
+	border-radius: 18px;
+	background: #ebebeb;
+}
+@keyframes editin {
+	from {
+		margin-top: 40%;
+		opacity: .5;
+	}
+	82% {
+		margin-top: 3%;
+		opacity: .9;
+	}
+	to {
+		margin-top: 0px;
+		opacity: 1;
+	}
+}
+/**************************************************************************************************/
+.baordInfoEditHeader {
+    color: #000000;
+    font-size: 30px;
+    font-family: tele-ult;
+	margin: 14px 0px 1px 0px;
+}
+.boardRadioGroup1 {
+    display: inline-block;
+    width: 260px;
+    vertical-align: top;
+}
+.boardRadioGroup2 {
+	display: inline-block;
+    vertical-align: top;
+}
+.baordInfoEditRadio {    
+	-ms-transform: scale(1.8);
+    -webkit-transform: scale(1.8);
+    transform: scale(1.8);
+    margin: 0px 2px 10px 8px;
+    vertical-align: middle;
+}
+.baordInfoEditText {
+    color: #000000;
+    font-size: 30px;
+    font-family: tele-nor;
+    width: calc(100% - 34px);
+    padding: 2px 2px;
+}
+.baordInfoEditBgCol {
+    color: #000000;
+    font-size: 30px;
+    font-family: tele-nor;
+    width: calc(100% - 34px);
+    padding: 2px 2px;
+}
+.baordInfoSentiment {
+    color: #000000;
+    font-size: 30px;
+    font-family: tele-nor;
+	margin-bottom: 5px;
+	width: 100px;
+    padding: 2px 2px;
+}
+.baordInfoEditSubGroup {
+    display: inline-block;
+    margin-top: 5px;
+    color: #000000;
+    font-size: 30px;
+    font-family: tele-nor;
+}
+.baordInfoInputTitle {
+    display: inline-block;
+    color: #000000;
+    font-size: 30px;
+    font-family: tele-nor;
+	margin: 0px 0px 5px 10px;
+    min-width: 58px;
+    text-align: right;
+}
+.baordInfoInputAltTitle {
+    display: inline-block;
+    color: #000000;
+    font-size: 30px;
+    font-family: tele-nor;
+	margin: 0px 10px 5px 0px;
+    min-width: 58px;
+    text-align: right;
+}
+.baordInfoEditNote {
+    color: #000000;
+    font-size: 23px;
+    font-family: tele-nor;
+    margin: 2px 70px 10px 0px;
+    font-style: italic;
+}
+.baordInfoSaveEditButton {
+    background: #008800;
+    color: white;
+    border: 2px solid #000000;
+    font-size: 30px;
+    font-family: tele-ult;
+	margin-top: 10px;
+    padding: 5px 20px;
+	cursor: pointer;
+}
+.baordInfoCancelEditButton {
+    background: #cccccc;
+    color: #111111;
+    border: 2px solid #aaaaaa;
+    font-size: 30px;
+    font-family: tele-ult;
+	margin-top: 10px;
+    padding: 5px 20px;
+	cursor: pointer;
+    float: right;
+    margin-right: 26px;
+}
+/**************************************************************************************************/
+.chatBox {
+	border-radius: 20px;
+	animation: slidein 1.0s;
+}
+@keyframes slidein {
+	from {
+		opacity: .3;
+	}
+	to {
+		opacity: 1;
+	}
+}
+.chatUser {
+	background-color: #ffffff;
+	text-align: left;
+    width: fit-content;
+    display: block;
+	margin: 15px 20px 15px 16px;
+}
+.chatAgent {    
+	background-color: #ffffff;
+    width: auto;
+    display: block;
+    text-align: right;
+	margin: 15px 16px 15px 20px;
+}
+.chatHiddenBlank {
+	color: #000000;
+    width: fit-content;
+    display: block;
+	margin: 0px 0px;
+    font-size: 1px !important;
+    line-height: 1px !important;
+}
+.chatNewBreak {
+	background-color: #55BB55;
+    width: auto;
+    display: block;
+    margin: 20px 14px;
+    padding: 6px;
+}
+.chatSubUser { 
+	background-color: #cccccc;
+	padding: 20px 20px;
+	color: #000000 !important;
+}
+.chatSubAgent { 
+	background-color: #007248;
+	padding: 20px 20px;
+}
+.chatSubNewBreak {
+	vertical-align: top;
+	border-radius: 20px;
+	display: inline-block;
+    font-size: 12px !important;
+    line-height: 14px !important;
+    color: #55BB55 !important;
+}
+.chatText {
+	color: #ffffff;
+    font-size: 50px;
+	line-height: 52px;
+	vertical-align: top;
+	border-radius: 20px;
+	display: inline-block;
+	font-family: Tele-Nor, sans-serif;
+}
+.chatNameStamp {
+	color: #ffffff;
+	font-size: 1px;
+	display: inline-block;
+}
+.chatTimeStamp {
+    display: block;
+    color: #000000;
+    margin: 3px 6px 0px 6px;
+    font-size: 18px;
+}
+/***************************************************************************************************/
+@media screen and (max-width: 760px) {
+	/*100% Device*/
+	.boardChatShellError {
+		font-size: 32px;
+	}
+	.chatText {
+		font-size: 26px;
+		line-height: 28px;
+	}
+	.chatSubAgent {
+		padding: 10px 15px;
+	}
+	.boardSideChat {
+		display: block;
+		width: calc(100% - 8px);
+		margin: 2px auto;
+	}
+	.boardChatShell {
+		height: calc(100% - 6px);
+		background-color: #ffffff !important;
+		background-image: none;
+		width: auto;
+		margin: 0px;
+	}
+	.boardChatInnerShell {
+		margin: 0px 0px 0px 0px;
+		top: 12px;
+		height: calc(100% - 12px);
+	}
+	.boardSideInfo {
+		display: none;
+	}
+	.boardRedditThumbnail {
+		min-width: auto;
+	}
+}
+@media screen and (min-width: 761px) and (max-width: 1000px) {
+	/*1000 MIN*/
+	.boardChatShellError {
+		font-size: 38px;
+	}
+	.boardInfoBlock {
+		padding: 5px;
+		border-radius: 8px;
+	}
+	.chatText {
+		font-size: 30px;
+		line-height: 32px;
+	}
+	.chatSubAgent {
+		padding: 10px 15px;
+	}
+	.boardChatInnerShell {
+		top: 12.8%;
+		height: 87.2%;
+		margin: 0px 46px 0px 14px;
+	}
+	.boardIcon {
+		width: 20px;
+		height: 20px;
+		display: none;
+	}
+	.controlButton { 
+		width: 25px;
+		height: 25px;
+	}
+	.boardInfoEdit {
+		width: 25px;
+		height: 25px;
+		display: block;
+	}
+	.boardIcoLabel {
+		font-size: 16px;
+		margin: 0px 0px 0px 2px;
+	}
+	.boardInfoTitle {
+		font-size: 40px;
+		margin: 15px 0px 0px 0px;
+	}
+	.boardRedditTitle {
+		font-size: 38px;
+	}
+	.boardInfoDesc {
+		font-size: 16px;
+		margin: 0px 0px 0px 2px;
+	}
+	.boardSettingLabel {
+		font-size: 18px;
+		margin: 0px 0px 0px 2px;
+	}
+	.boardBlockData {
+		padding-bottom: 5px;
+		margin-bottom: 8px;
+	}
+	.baordInfoEditNote {
+		margin: 2px 24px 10px 0px;
+	}
+	.baordInfoEditMode {
+		zoom: .62;
+	}
+	.boardRedditThumbnail {
+		min-width: auto;
+	}
+}
+@media screen and (min-width: 1001px) and (max-width: 1460px) {
+	/*1000 MIN*/
+	.boardChatShellError {
+		font-size: 44px;
+	}
+	.chatText {
+		font-size: 34px;
+		line-height: 36px;
+		max-width: 480px;
+	}
+	.boardInfoBlock {
+		padding: 18px;
+	}
+	.chatSubAgent {
+		padding: 10px 15px;
+	}
+	.boardChatInnerShell {
+		top: 12.8%;
+		height: 87.2%;
+		margin: 0px 60px 0px 30px;
+	}
+	.boardIcon {
+		width: 20px;
+		height: 20px;
+	}
+	.controlButton { 
+		width: 25px;
+		height: 25px;
+	}
+	.boardInfoEdit {
+		width: 25px;
+		height: 25px;
+	}
+	.boardIcoLabel {
+		font-size: 16px;
+		margin: 0px 0px 0px 4px;
+	}
+	.boardInfoTitle {
+		font-size: 40px;
+		margin: 15px 0px 0px 0px;
+	}
+	.boardRedditTitle {
+		font-size: 38px;
+	}
+	.boardInfoDesc {
+		font-size: 16px;
+	}
+	.boardSettingLabel {
+		font-size: 18px;
+	}
+	.boardBlockData {
+		padding-bottom: 5px;
+		margin-bottom: 8px;
+	}
+	.boardRadioGroup1 {
+		display: block;
+	}
+	.boardRadioGroup2 {
+		display: block;
+	}
+	.baordInfoSentiment {
+		width: 82px;
+	}
+	.baordInfoEditNote {
+		margin: 2px 24px 10px 0px;
+	}
+	.baordInfoEditMode {
+		zoom: .74;
+	}
+	.boardRedditThumbnail {
+		min-width: auto;
+	}
+}
+@media screen and (min-width: 1461px) and (max-width: 1780px) {
+	/*1420 MIN - Default*/
+	.chatText {
+		font-size: 40px;
+		line-height: 42px;
+		max-width: 720px;
+	}
+	.boardChatInnerShell {
+		top: 12.8%;
+		height: 87.2%;
+	}
+	.boardIcon {
+		width: 40px;
+		height: 40px;
+	}
+	.boardIcoLabel {
+		font-size: 22px;
+	}
+	.boardInfoTitle {
+		font-size: 52px;
+		margin: 12px 0px 0px 0px;
+	}
+	.boardRedditTitle {
+		font-size: 48px;
+	}
+	.boardInfoDesc {
+		font-size: 22px;
+	}
+	.boardSettingLabel {
+		font-size: 30px;
+	}
+	.boardBlockData {
+		padding-bottom: 8px;
+		margin-bottom: 10px;
+	}
+	.baordInfoEditMode {
+		zoom: .8;
+	}
+}
+@media screen and (min-width: 1781px) and (max-width: 2280px) {
+	/**1760 MIN**/ /*1822~ish seems to be Big Screens*/
+	.chatText {
+		font-size: 46px;
+		line-height: 48px;
+		max-width: 880px;
+	}
+	.boardChatInnerShell {
+		top: 13.1%;
+		height: 86.9%;
+	}
+}
+@media screen and (min-width: 2281px) and (max-width: 2780px) {
+	/**1760 MIN**/ /*1822~ish seems to be Big Screens*/
+	.chatText {
+		font-size: 46px;
+		line-height: 48px;
+		max-width: 880px;
+	}
+	.boardChatInnerShell {
+		top: 13.1%;
+		height: 86.9%;
+		margin: 0px 110px 0px 78px;
+	}
+}
+@media screen and (min-width: 2781px) {
+	/*2281 - 4000 4K Screens*/
+	.boardBody {
+		zoom: 2;
+	}
+	.loadingDiv {
+		zoom: 2;
+	}
+	.boardRedditLink {
+		max-height: 222px;
+	}
+	.chatText {
+		max-width: 88% !important;
+	}
+}

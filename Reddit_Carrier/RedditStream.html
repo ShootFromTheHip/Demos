@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+		<link rel="shortcut icon" href="./images/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="./css/RedditStream.css?ts=05_28_19_0834">
+		<script type="text/javascript" src="./js/RedditStream.js?ts=05_28_19_0834"></script>
+		<title>Reddit Stream</title>
+	</head>
+    <body class="boardBody">
+		<div class="notificationShell" style="display: none;">
+			<div class="notificationBlock"></div>
+		</div>
+		<div class="boardSideChat" >
+			<div class="boardChatShell">
+				<img class="boardChatShellLoading" src="./images/spinner_white_clear.gif">
+				<div class="boardChatShellError" style="display:none;" >Unable to retrieve Chats. Please try a different Filter / Sentiment Range.</div>
+				<div class="boardChatInnerShell" id="boardChatWindow">
+				</div>
+			</div>
+		</div>
+		<div class="boardSideInfo">
+			<img src="./images/Edit_icon.png" class="boardIcon boardInfoEdit" title="Edit Chat Builder">
+			<div class="baordInfoDisplayMode">
+				<div class="boardInfoTitle">Reddit Stream</div>
+				<div class="boardInfoDesc">www.reddit.com/r/tmobile/</div>
+				<div class="boardInfoControlHolder">
+					<div class="boardInfoControlButton"><img class="controlButton controlButtonSlow" src="./images/Slow_icon_light.png" title="Slow down Chats" ></div>
+					<div class="boardInfoControlButton"><img class="controlButton controlButtonPsPy" src="./images/Pause_icon_light.png" title="Pause Chats" ></div>
+					<div class="boardInfoControlButton"><img class="controlButton controlButtonFast" src="./images/Fast_icon_light.png" title="Speed up Chats" ></div>
+					<div class="boardInfoControlButton"><img class="controlButton controlButtonCopy" src="./images/Copy_icon_light.png" title="Copy Chats to Clipboard" ></div>
+				</div>
+				<div class="boardInfoBlock">
+					<div class="boardBlockData">
+						<span class="boardInfoTitle boardRedditTitle">-</span>
+					</div>
+				</div>
+				<div class="boardInfoBlock">
+					<div class="boardBlockData">
+						<div class="boardSubBlockData">
+							<img src="./images/Date_Range_icon_dark.png" class="boardIcon">
+							<span class="boardIcoLabel">Reddit Range</span>
+						</div>
+						<div class="boardSubBlockData">
+							<img src="./images/Messages_icon_dark.png" class="boardIcon">
+							<span class="boardIcoLabel">Messages</span>
+						</div>
+					</div>
+					<div class="boardBlockRow1">
+						<span class="boardSettingLabel">-</span>
+						<span class="boardSettingLabel">-</span>
+					</div>
+				</div>
+			</div>
+			<div class="baordInfoEditMode" style="display: none;">
+				<div class="baordInfoEditHeader">Name</div>
+					<input class="baordInfoEditText" type="text" id="baordInfoEditName" maxlength="40" placeholder="Name">
+				<div class="baordInfoEditHeader">BG Color</div>
+					<input class="baordInfoEditBgCol" type="text" id="baordInfoEditBgCol" maxlength="40" placeholder="#797a85">
+				<div class="baordInfoEditHeader">Data Source</div>
+					<div class="boardRadioGroup1">
+						<input class="baordInfoEditRadio" type="radio" name="baordInfoEditRedditSource" value="www.reddit.com/r/tmobile/" alt="T-Mobile"><span class="baordInfoInputTitle">T-Mobile</span>
+					</div>
+					<div class="boardRadioGroup2">
+						<input class="baordInfoEditRadio" type="radio" name="baordInfoEditRedditSource" value="www.reddit.com/r/sprint/" alt="Sprint"><span class="baordInfoInputTitle">Sprint</span>
+					</div>
+					<div class="boardRadioGroup1">
+						<input class="baordInfoEditRadio" type="radio" name="baordInfoEditRedditSource" value="www.reddit.com/r/verizon/" alt="Verizon"><span class="baordInfoInputTitle">Verizon</span>
+					</div>
+					<div class="boardRadioGroup2">
+						<input class="baordInfoEditRadio" type="radio" name="baordInfoEditRedditSource" value="www.reddit.com/r/att/" alt="AT&T"><span class="baordInfoInputTitle">AT&T</span>
+					</div>
+				<div class="baordInfoEditHeader"></div>
+				<input class="baordInfoSaveEditButton" type="button" name="baordInfoEditSave" value="Save" title="Save your changes." >
+				<input class="baordInfoCancelEditButton" type="button" name="baordInfoEditSave" value="Cancel" title="Cancel your changes." >
+			</div>
+			<div class="boardInfoMhLogo"></div>
+		</div>
+    </body>
+</html>
